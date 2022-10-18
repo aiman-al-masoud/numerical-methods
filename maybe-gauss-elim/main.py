@@ -1,32 +1,23 @@
-def apply(m, r1, r2, k):
-    """
-    Use row r1 to set element k on row r2 to zero.
-    This is a transformation that doesn't change the solution of the system.
-    """
+def gem(m):
 
-    row1 = m[r1]
-    row2 = m[r2]
+    n = len(m)
 
-    alpha = row2[k]/row1[k]
-    
-    to_b_added_row = [alpha*e for e in row1]
-    new_row2 = [e1 - e2 for e1, e2 in zip(row2, to_b_added_row)]
+    for k in range(n):  # for each possible column k
 
-    m2 = m[:]  # copy matrix
-    m2[r2] = new_row2
+        m = pivot(m, k)  # pivoting step
 
-    # print('alpha is: ', '+' if sign>0 else '-'  , abs(row2[k]), '/' , abs(row1[k]))
-    # print('alpha is:', 'positive' if alpha>0 else 'negative',  end='\n\n')
-    return m2
+        print('after pivoting')
+        pretty_print(m)
+        
+        r1 = k  # row one, used for simplifying
 
+        for r2 in range(r1+1, n):  # for each possible row two, below row one
 
-def pretty_print(m):
-    for row in m:
-        for col in row:
-            print(col, '\t', end='')
-        print()
+            print('eliminating row:', r2, 'using row:', r1, 'on col:', k)
+            m = apply(m, r1, r2, k)
+            pretty_print(m)
 
-    print()
+    return m
 
 
 def pivot(m, k): # k is the column to be checked
@@ -54,6 +45,26 @@ def pivot(m, k): # k is the column to be checked
 
     return no_change_rows + to_be_sorted_rows
 
+def apply(m, r1, r2, k):
+    """
+    Use row r1 to set element k on row r2 to zero.
+    This is a transformation that doesn't change the solution of the system.
+    """
+
+    row1 = m[r1]
+    row2 = m[r2]
+
+    alpha = row2[k]/row1[k]
+    
+    to_b_added_row = [alpha*e for e in row1]
+    new_row2 = [e1 - e2 for e1, e2 in zip(row2, to_b_added_row)]
+
+    m2 = m[:]  # copy matrix
+    m2[r2] = new_row2
+
+    # print('alpha is: ', '+' if sign>0 else '-'  , abs(row2[k]), '/' , abs(row1[k]))
+    # print('alpha is:', 'positive' if alpha>0 else 'negative',  end='\n\n')
+    return m2
 
 def test_pivot():
 
@@ -66,28 +77,13 @@ def test_pivot():
         pivot(m, 2) == [[2, 6, 7, 0], [1, 4, 3, 6], [3, 6, 3, 0]] and
         pivot(m, 1) == [[3, 6, 3, 0], [1, 4, 3, 6], [2, 6, 7, 0]])
 
+def pretty_print(m):
+    for row in m:
+        for col in row:
+            print(col, '\t', end='')
+        print()
 
-def gem(m):
-
-    n = len(m)
-
-    for k in range(n):  # for each possible column k
-
-        m = pivot(m, k)  # pivoting step
-
-        print('after pivoting')
-        pretty_print(m)
-        
-        r1 = k  # row one, used for simplifying
-
-        for r2 in range(r1+1, n):  # for each possible row two, below row one
-
-            print('eliminating row:', r2, 'using row:', r1, 'on col:', k)
-            m = apply(m, r1, r2, k)
-            pretty_print(m)
-
-    return m
-
+    print()
 
 if __name__ == '__main__':
 
