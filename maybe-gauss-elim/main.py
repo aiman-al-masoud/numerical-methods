@@ -28,7 +28,7 @@ def pretty_print(m):
     print()
 
 
-def pivot(m, k):
+def pivot(m, k): # k is the column to be checked
     """
     To avoid having a r1[k] == 0 and doing: alpha = r2[k]/0.
     This returns a new matrix with (if needed) a hoisted up row.
