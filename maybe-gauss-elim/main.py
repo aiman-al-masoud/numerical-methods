@@ -7,7 +7,7 @@ def apply(m, r1, r2, k):
     row1 = m[r1]
     row2 = m[r2]
 
-    alpha = row2[k]/row1[k]
+    alpha = row2[k]/row1[k] 
     sign = -1 if row1[k]*row2[k] >= 0 else 1
 
     to_b_added_row = [alpha*e for e in row1]
