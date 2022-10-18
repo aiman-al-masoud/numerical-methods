@@ -42,7 +42,7 @@ def pivot(m, k):
 
     m2 = m[:]  # copy matrix
 
-    # swap rows such that row i goes at the top
+    # swap rows such that row i gets hoisted up to the top
     m2[0], m2[i] = m2[i], m2[0]
     return m2
 
