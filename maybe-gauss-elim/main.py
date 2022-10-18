@@ -38,6 +38,12 @@ def pivot(m, k): # k is the column to be checked
     # etc ...
     # To "nullify" the kth column you use the kth row.
     #
+    # (AFTER PIVOTING)
+
+    # You must 
+    #
+    #
+    #
 
     # list of tuples, each tuple has row-index and row
     rows = enumerate(m)
