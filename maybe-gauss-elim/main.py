@@ -1,6 +1,7 @@
 def apply(m, r1, r2, k):
     """
     Use row r1 to nullify element k on row r2.
+    This is a transformation that doesn't change the solution of the system.
     """
 
     row1 = m[r1]
