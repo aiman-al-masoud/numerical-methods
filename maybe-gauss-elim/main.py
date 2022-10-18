@@ -41,7 +41,7 @@ def pivot(m, k): # k is the column to be checked
     # (AFTER PIVOTING)
 
     # During each pivoting step:
-    # You must sort rows on the kth element, but only rows 
+    # You must sort rows on the their kth element, but only rows 
     # from the kth row to the last row.
     #
     #
