@@ -34,7 +34,7 @@ def pivot(m, k):
     """
 
     # list of tuples, each tuple has row-index and row
-    rows = list(enumerate(m))
+    rows = enumerate(m)
 
     # get index i of row with max k-th element
     i = max(rows,  key=lambda r:  (-1 if r[0] > k else 1) * abs(r[1][k]))[0]
