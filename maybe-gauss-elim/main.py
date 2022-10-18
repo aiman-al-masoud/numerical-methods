@@ -14,7 +14,7 @@ def gem(m):
         for r2 in range(r1+1, n):  # for each possible row two, below row one
 
             print('eliminating row:', r2, 'using row:', r1, 'on col:', k)
-            m = apply(m, r1, r2, k)
+            m, alpha = apply(m, r1, r2, k)
             pretty_print(m)
 
     return m
@@ -64,7 +64,7 @@ def apply(m, r1, r2, k):
 
     # print('alpha is: ', '+' if sign>0 else '-'  , abs(row2[k]), '/' , abs(row1[k]))
     # print('alpha is:', 'positive' if alpha>0 else 'negative',  end='\n\n')
-    return m2
+    return m2, alpha
 
 def test_pivot():
 
