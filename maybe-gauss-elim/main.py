@@ -47,6 +47,9 @@ def pivot(m, k): # k is the column to be checked
     # * actually just hoist up "max row" to the kth position 
     #
 
+
+
+    # OLD WRONG PART
     # list of tuples, each tuple has row-index and row
     rows = enumerate(m)
 
