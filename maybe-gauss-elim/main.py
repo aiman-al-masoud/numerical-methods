@@ -8,7 +8,10 @@ def apply(m, r1, r2, k):
     row2 = m[r2]
 
     sign = -1 if row1[k]*row2[k] >= 0 else 1
-    alpha = sign * row2[k]/row1[k]
+    alpha = sign * abs(row2[k]/row1[k])
+    print('alpha is: ', '+' if sign>0 else '-'  , row2[k], '/' , row1[k])
+    print('alpha is:', 'positive' if alpha>0 else 'negative',  end='\n\n')
+
 
     to_b_added_row = [alpha*e for e in row1]
 
@@ -41,28 +44,30 @@ def pivot(m, k): # k is the column to be checked
     # (AFTER PIVOTING)
 
     # During each pivoting step:
-    # You must sort* rows on the their kth element, but only rows 
+    # You must sort* rows on the their k-th element, but only rows 
     # from the kth row to the last row. The rows before the kth stay the same.
     #
     # * actually just hoist up "max row" to the kth position 
     #
 
-    
+    no_change_rows = m[:k]  # k-th not included
+    to_be_sorted_rows = m[k:] # k-th included
+    to_be_sorted_rows.sort(key= lambda r : abs(r[k]), reverse=True)
 
-
+    return no_change_rows + to_be_sorted_rows
 
     # OLD WRONG PART
     # list of tuples, each tuple has row-index and row
-    rows = enumerate(m)
+    # rows = enumerate(m)
 
-    # get index i of row with max k-th element
-    i = max(rows,  key=lambda r:  (-1 if r[0] > k else 1) * abs(r[1][k]))[0]
+    # # get index i of row with max k-th element
+    # i = max(rows,  key=lambda r:  (-1 if r[0] > k else 1) * abs(r[1][k]))[0]
 
-    m2 = m[:]  # copy matrix
+    # m2 = m[:]  # copy matrix
 
-    # swap rows such that row i gets hoisted up to the top
-    m2[0], m2[i] = m2[i], m2[0]
-    return m2
+    # # swap rows such that row i gets hoisted up to the top
+    # m2[0], m2[i] = m2[i], m2[0]
+    # return m2
 
 
 def test_pivot():
@@ -84,11 +89,15 @@ def gem(m):
     for k in range(n):  # for each possible column k
 
         m = pivot(m, k)  # pivoting step
+
+        print('after pivoting')
+        pretty_print(m)
+        
         r1 = k  # row one, used for simplifying
 
         for r2 in range(r1+1, n):  # for each possible row two, below row one
 
-            print("for rows:", r1, r2, "on col:", k, "\n")
+            print('eliminating row:', r2, 'using row:', r1, 'on col:', k)
             m = apply(m, r1, r2, k)
             pretty_print(m)
 
@@ -97,25 +106,25 @@ def gem(m):
 
 if __name__ == '__main__':
 
-    # m = [
-    #     [3, 6, 3, 0],
-    #     [1, 4, 3, 6],
-    #     [2, 6, 7, 0],
-    # ]
-
-    # m = [
-    #     [2, 7, 5],
-    #     [14, 50, 36],
-    #     [2, 8, 8],
-    # ]
-
-    m = [ # TODO: WROOOOOOOOONG
-        [-1, 1, 3, 1],
-        [2, 5, 5, 2],
-        [0, 7, 2, 3]
+    m = [
+        [3, 6, 3, 0],
+        [1, 4, 3, 6],
+        [2, 6, 7, 0],
     ]
 
-    assert test_pivot()
+    m = [
+        [2, 7, 5],
+        [14, 50, 36],
+        [2, 8, 8],
+    ]
+
+    # m = [ # TODO: WROOOOOOOOONG
+    #     [-1, 1, 3, 1],
+    #     [2, 5, 5, 2],
+    #     [0, 7, 2, 3]
+    # ]
+
+    # assert test_pivot()
     print("initial:")
     pretty_print(m)
     m = gem(m)
