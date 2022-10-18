@@ -14,7 +14,7 @@ def apply(m, r1, r2, k):
 
     new_row2 = [e1 + e2 for e1, e2 in zip(row2, to_b_added_row)]
 
-    m2 = m[:] # copy matrix
+    m2 = m[:]  # copy matrix
     m2[r2] = new_row2
     return m2
 
@@ -85,10 +85,16 @@ if __name__ == '__main__':
     #     [2, 6, 7, 0],
     # ]
 
-    m = [
-        [2, 7, 5],
-        [14, 50, 36],
-        [2, 8, 8],
+    # m = [
+    #     [2, 7, 5],
+    #     [14, 50, 36],
+    #     [2, 8, 8],
+    # ]
+
+    m = [ # TODO: WROOOOOOOOONG
+        [-1, 1, 3, 1],
+        [2, 5, 5, 2],
+        [0, 7, 2, 3]
     ]
 
     assert test_pivot()
