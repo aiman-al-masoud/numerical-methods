@@ -34,6 +34,11 @@ def pivot(m, k): # k is the column to be checked
     This returns a new matrix with (if needed) a hoisted up row.
     """
 
+    # NB: to "nullify" the first column you use the first row,
+    # etc ...
+    # To "nullify" the kth column you use the kth row.
+    #
+
     # list of tuples, each tuple has row-index and row
     rows = enumerate(m)
 
