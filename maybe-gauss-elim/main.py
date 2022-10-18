@@ -31,6 +31,7 @@ def pretty_print(m):
 def pivot(m, k):
     """
     To avoid having a r1[k] == 0 and doing: alpha = r2[k]/0.
+    This returns a new matrix with (if needed) a hoisted up row.
     """
 
     # list of tuples, each tuple has row-index and row
