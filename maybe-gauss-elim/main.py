@@ -15,6 +15,7 @@ def gem(m):
 
             print('eliminating row:', r2, 'using row:', r1, 'on col:', k)
             m, alpha = apply(m, r1, r2, k)
+            print('alpha=', alpha)
             pretty_print(m)
 
     return m
