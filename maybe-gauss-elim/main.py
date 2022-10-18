@@ -37,7 +37,6 @@ def pivot(m, k):
     rows = list(enumerate(m))
 
     # get index i of row with max k-th element
-    # TODO: limit the number of rows to the ones that still have to be eliminated plus the one above them, depends on k
     i = max(rows,  key=lambda r:  (-1 if r[0] > k else 1) * abs(r[1][k]))[0]
 
     m2 = m[:]  # copy matrix
