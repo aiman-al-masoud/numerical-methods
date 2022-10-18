@@ -41,10 +41,10 @@ def pivot(m, k): # k is the column to be checked
     # (AFTER PIVOTING)
 
     # During each pivoting step:
-    # You must sort rows on the their kth element, but only rows 
-    # from the kth row to the last row.
+    # You must sort* rows on the their kth element, but only rows 
+    # from the kth row to the last row. The rows before the kth stay the same.
     #
-    #
+    # * actually just hoist up "max row" to the kth position 
     #
 
     # list of tuples, each tuple has row-index and row
