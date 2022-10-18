@@ -9,7 +9,7 @@ def apply(m, r1, r2, k):
 
     sign = -1 if row1[k]*row2[k] >= 0 else 1
     alpha = sign * abs(row2[k]/row1[k])
-    print('alpha is: ', '+' if sign>0 else '-'  , row2[k], '/' , row1[k])
+    print('alpha is: ', '+' if sign>0 else '-'  , abs(row2[k]), '/' , abs(row1[k]))
     print('alpha is:', 'positive' if alpha>0 else 'negative',  end='\n\n')
 
 
