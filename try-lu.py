@@ -7,10 +7,12 @@ a = np.array([[2, 7, 5],
 
 print(a)
 
-pl, u = lu(a, permute_l=True)
+p, l, u = lu(a)
 
 
-# print(p, l, u)
+print('Permutation Matrix\n\n', p,  '\n'*3, 'Lower Triangular Matrix\n\n', l,'\n'*3, 'Upper Triangular\n\n', u)
 
-print(pl)
-print(u)
+
+# k = 0
+# def nome(r):
+#     return abs(r[k])
