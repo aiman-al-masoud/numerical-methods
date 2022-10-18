@@ -1,13 +1,16 @@
 import numpy as np
 from scipy.linalg import lu
 
-A = np.array([ [2, 7, 5], [14, 50, 36], [2, 8, 8]  ])
+a = np.array([[2, 7, 5], 
+             [14, 50, 36], 
+             [2, 8, 8]])
 
-print(A)
+print(a)
 
-p, l, u = lu(A)
+pl, u = lu(a, permute_l=True)
+
 
 # print(p, l, u)
 
-print(l)
+print(pl)
 print(u)
