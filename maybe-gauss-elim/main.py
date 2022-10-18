@@ -3,6 +3,7 @@ def apply(m, r1, r2, k):
     Use row r1 to set element k on row r2 to zero.
     This is a transformation that doesn't change the solution of the system.
     """
+    
 
     row1 = m[r1]
     row2 = m[r2]
