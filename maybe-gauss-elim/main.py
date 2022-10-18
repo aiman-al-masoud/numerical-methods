@@ -14,7 +14,7 @@ def apply(m, r1, r2, k):
 
     new_row2 = [e1 + e2 for e1, e2 in zip(row2, to_b_added_row)]
 
-    m2 = m[:]
+    m2 = m[:] # copy matrix
     m2[r2] = new_row2
     return m2
 
@@ -40,7 +40,7 @@ def pivot(m, k):
     # TODO: limit the number of rows to the ones that still have to be eliminated plus the one above them, depends on k
     i = max(rows,  key=lambda r:  (-1 if r[0] > k else 1) * abs(r[1][k]))[0]
 
-    m2 = m[:]  # copy
+    m2 = m[:]  # copy matrix
 
     # swap rows such that row i goes at the top
     m2[0], m2[i] = m2[i], m2[0]
