@@ -4,7 +4,7 @@ import numpy as np
 from numpy import array
 from typing import Tuple
 from numpy.linalg import norm
-
+# norm = lambda x : np.linalg.norm(x, ord=np.inf)
 
 # with jacobi method
 def split_matrix(a:np.ndarray)->Tuple[np.ndarray, np.ndarray]:
