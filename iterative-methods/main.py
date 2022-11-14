@@ -40,7 +40,7 @@ def solve(a:np.ndarray, b:np.ndarray, x:np.ndarray, tau:float):
         print(m)
         print('n matrix:')
         print(n)
-        xKplusOne = (b - n.dot(x)) / m.diagonal() # with Jacobi
+        xKplusOne = (b + n.dot(x)) / m.diagonal() # with Jacobi
         print('x(k+1):')
         print(xKplusOne)
 
@@ -63,5 +63,6 @@ a = np.array([[4, 2, 0],
 b = np.array([0, 2, 0])
 x0 = np.array([0,0,0])
 tau = 10**-3
-
 solve(a, b, x0, tau)
+
+print(np.linalg.solve(a, b))
